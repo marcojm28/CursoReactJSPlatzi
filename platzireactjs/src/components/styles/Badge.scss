@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Heebo:wght@300&display=swap');
+
+body{
+    margin:0;
+}
+
+.BadgeContainer{
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 1fr;
+    grid-template-rows: 150px auto 160px 140px;
+    row-gap: 10px;
+
+    .BadgeHeader{
+        display: grid;
+        grid-template-columns: 1fr 400px 1fr;
+        grid-template-rows: 100%;
+        background-color: #2C2F33;
+        overflow: hidden;
+        .HeaderLogo{
+            width: 100%;
+            height: 100%;
+            grid-column-start: 2;
+            grid-column-end: 3;
+
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+    .BadgeAvatar{
+        display: grid;
+        grid-template-columns: 420px auto;
+        grid-template-rows: 45vh;
+        justify-content: center;
+        column-gap: 3%;
+
+        .AvatarImg{
+            width: 100%;
+            height: 100%;
+            grid-row: 1 / span 1;
+
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .AvatarName{
+            font-family: 'Anton', sans-serif;
+            p{
+                font-size: 90px;
+            }
+        }
+    }
+
+    .BadgeInfo{
+        display: grid;
+        grid-template-rows: 65% 35%;
+        background-color: rgb(220, 233, 233);
+        justify-content: center;
+        text-align: center;
+        font-family: 'Anton', sans-serif;
+        font-family: 'Heebo', sans-serif;
+        p{
+            font-size: 30px;
+            margin:0;
+        }
+    }
+
+    .BadgeTwitter{
+        display: grid;
+        grid-template-columns: 10% auto 10%;
+        grid-auto-rows: 100%;
+        justify-content: center;
+
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+

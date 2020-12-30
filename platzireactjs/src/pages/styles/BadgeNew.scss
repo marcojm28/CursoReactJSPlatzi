@@ -1,0 +1,28 @@
+.BadgeNewHero{
+    background-image: url("https://descargarfondos.com/wp-content/uploads/Una-galaxia-de-estrellas.jpg");
+}
+
+.ContainerBadgeNew{
+    padding: 10px;
+}
+
+.ContainerNavBar{
+    display: grid;
+    grid-template-rows: 5vh;
+    grid-template-columns: 9vw 1fr;
+    background-color: #2C2F33;
+    padding: 20px;
+    .ContainerLogoNavBar{
+        display:grid;
+        grid-template-columns:75px auto;
+        grid-template-rows: 100%;
+        grid-column-gap: 10px;
+
+        .ContainerLogoNavBarImg{
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}

@@ -1,16 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'bootstrap/dist/css/bootstrap.css';
 import Badge from './components/Badge';
-import App from './App';
+import BadgeNew from './pages/BadgeNew';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Badge/>
+    <BadgeNew></BadgeNew>
   </React.StrictMode>,
   document.getElementById('app')
 );
 
+//<Badge firstName="Pedro" lastName="Carpio" jobTitle="Desarrollador back end"/>
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals

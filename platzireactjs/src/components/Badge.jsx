@@ -6,8 +6,9 @@ import confCountry from '../images/Peru.png'
 import '../components/styles/Badge.scss';
 class Badge extends React.Component{
     render(){
+
         return(
-            <div className="BadgeContainer">
+            <div className="BadgeContainer border">
                 <div className="BadgeHeader">
                     <div className="HeaderLogo">
                         <img src={confLogo} alt="Logo de conferencia"/>
@@ -18,12 +19,12 @@ class Badge extends React.Component{
                         <img src={confBatman} alt="Avatar"/>
                     </div>
                     <div className="AvatarName">
-                        <p>Marco Antonio <br/> Juárez Miranda</p>
+                        <p>{this.props.firstName} <br/> {this.props.lastName}</p>
                     </div>
                 </div>
                 <div className="BadgeInfo">
                     <div className="BadgeMail">
-                        <p>Desarrollador Front End</p>
+                        <p>{this.props.jobTitle}</p>
                     </div>
                     <div className="BadgeTwitter">
                         <div className="BadgeIconTwitter">
@@ -38,7 +39,9 @@ class Badge extends React.Component{
                     </div>
                 </div>
                 <div className="BadgeFooter">
-                    #platzicom
+                    <div className="BadgeFooterText">
+                        <h2 className="TextFooter">#platzicom</h2>
+                    </div>
                 </div>
             </div>
         );        

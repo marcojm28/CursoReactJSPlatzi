@@ -1,8 +1,8 @@
 import React from 'react';
 import confLogo from '../images/FortiClient.PNG';
 import confBatman from '../images/batman.png';
-import confTwitter from '../images/twitter.png'
-import confCountry from '../images/Peru.png'
+import confTwitter from '../images/twitter.png';
+import confCountry from '../images/Peru.png';
 import '../components/styles/Badge.scss';
 class Badge extends React.Component{
     render(){

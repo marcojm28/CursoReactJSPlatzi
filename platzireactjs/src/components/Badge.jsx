@@ -31,7 +31,7 @@ class Badge extends React.Component{
                             <img src={confTwitter} alt="Twitter"/>
                         </div>
                         <div className="BadgeMail">
-                            <p>@mjuarezm</p>
+                            <p>{this.props.email}</p>
                         </div>
                         <div className="BadgeIconCountry">
                             <img src={confCountry} alt="País"/>
@@ -40,7 +40,7 @@ class Badge extends React.Component{
                 </div>
                 <div className="BadgeFooter">
                     <div className="BadgeFooterText">
-                        <h2 className="TextFooter">#platzicom</h2>
+                        <h2 className="TextFooter">{this.props.twitter}</h2>
                     </div>
                 </div>
             </div>

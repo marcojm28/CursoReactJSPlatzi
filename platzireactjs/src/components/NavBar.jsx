@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import PlatziLogo from '../images/PlatziLogo.png';
 import '../pages/styles/BadgeNew.scss';
 class NavBar extends React.Component {
@@ -8,15 +9,15 @@ class NavBar extends React.Component {
                 
                     <div className="ContainerLogoNavBar">
                         <div className="ContainerLogoNavBarImg">
-                            <a href="/">
+                            <Link to="/badges">
                                 <img src={PlatziLogo} alt="PlatziLogo"></img>
-                            </a>
+                            </Link>
                         </div>
                         <div className="ContainerLogoNavBarText">
-                            <a href="/">
+                            <Link to="/badges">
                             <span className="font-weight-light">Platzi</span>
                             <span className="font-weight-bold">Conf</span>
-                            </a>
+                            </Link>
                         </div>
                     </div>
             </div>

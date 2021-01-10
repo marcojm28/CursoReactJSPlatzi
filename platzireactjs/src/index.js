@@ -1,15 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.css';
-import Badge from './components/Badge';
-import BadgeNew from './pages/BadgeNew';
 import reportWebVitals from './reportWebVitals';
+import App from './components/App';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <BadgeNew></BadgeNew>
-  </React.StrictMode>,
-  document.getElementById('app')
+ReactDOM.render(<App/>,document.getElementById('app')
 );
 
 //<Badge firstName="Pedro" lastName="Carpio" jobTitle="Desarrollador back end"/>

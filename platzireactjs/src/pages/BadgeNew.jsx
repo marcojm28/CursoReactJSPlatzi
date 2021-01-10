@@ -1,9 +1,8 @@
 import React from "react";
-import NavBar from "../components/NavBar";
 import Badge from "../components/Badge";
 import BadgeForm from "../components/BadgeForm";
 import "../pages/styles/BadgeNew.scss";
-import PlatziLogo from "../images/PlatziLogo.png";
+import PlatziLogo from "../images/Subscriber-pana.png";
 class BadgeNew extends React.Component {
   state = {
     form: {
@@ -26,12 +25,15 @@ class BadgeNew extends React.Component {
 
   render() {
     return (
-      <div>
-        <NavBar></NavBar>
+      <React.Fragment>
         <div className="row">
           <div className="col">
             <div className="BadgeNewHero">
-              <img className="img-fluid" src={PlatziLogo} alt="logo"></img>
+              <div className="row">
+                <div className="col-3">
+                  <img className="img-fluid" src={PlatziLogo} alt="logo"></img>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -54,7 +56,7 @@ class BadgeNew extends React.Component {
             </div>
           </div>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

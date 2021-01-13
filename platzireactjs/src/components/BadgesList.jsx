@@ -1,11 +1,22 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../components/styles/BadgesList.scss";
-import TwitterIcon from "../images/twitter.png";
+
 class BadgesList extends React.Component {
   render() {
+    if(this.props.badges.length == 0){
+        return(
+          <div>
+            <h3>No badges were found</h3>
+            <Link className="btn btn-success btn-lg" to="/badges/new">create new badge</Link>
+          </div>
+        );
+    }
+
+
     return (
       <ul className="list-unstyled">
-        {this.props.badges.map((item) => {
+        {this.props.badges?.map((item) => {
           return (
             <li key={item.id}>
               <div className="form-group card text-white bg-success">

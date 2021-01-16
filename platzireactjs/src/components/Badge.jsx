@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Gravatar from './Gravatar';
 import confLogo from '../images/FortiClient.PNG';
-import confBatman from '../images/batman.png';
 import confTwitter from '../images/twitter.png';
 import confCountry from '../images/Peru.png';
 import '../components/styles/Badge.scss';
-class Badge extends React.Component{
-    render(){
+function Badge(props){
+
+    const dataGravatar = {
+        email: props.email,
+        className: '',
+    };
 
         return(
             <div className="BadgeContainer border">
@@ -14,24 +18,25 @@ class Badge extends React.Component{
                         <img src={confLogo} alt="Logo de conferencia"/>
                     </div> 
                 </div>
-                <div className="BadgeAvatar">
-                    <div className="AvatarImg">
-                        <img src={confBatman} alt="Avatar"/>
+                <div className="row">
+                    <div className="col-1"></div>
+                    <div className="col-3">
+                        <Gravatar email={dataGravatar.email} className={dataGravatar.className}></Gravatar>
                     </div>
-                    <div className="AvatarName">
-                        <p>{this.props.firstName} <br/> {this.props.lastName}</p>
+                    <div className="col">
+                        <h1 className="lg">{props.firstName} <br/> {props.lastName}</h1>
                     </div>
                 </div>
                 <div className="BadgeInfo">
                     <div className="BadgeMail">
-                        <p>{this.props.jobTitle}</p>
+                        <p>{props.title}</p>
                     </div>
                     <div className="BadgeTwitter">
                         <div className="BadgeIconTwitter">
                             <img src={confTwitter} alt="Twitter"/>
                         </div>
                         <div className="BadgeMail">
-                            <p>{this.props.email}</p>
+                            <p>{props.email}</p>
                         </div>
                         <div className="BadgeIconCountry">
                             <img src={confCountry} alt="País"/>
@@ -40,12 +45,12 @@ class Badge extends React.Component{
                 </div>
                 <div className="BadgeFooter">
                     <div className="BadgeFooterText">
-                        <h2 className="TextFooter">{this.props.twitter}</h2>
+                        <h2 className="TextFooter">{props.twitter}</h2>
                     </div>
                 </div>
             </div>
         );        
-    }
+    
 }
 
 export default Badge;

@@ -1,87 +1,81 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import { BrowserRouter, Route } from 'react-router-dom'
 import Spinner from "react-bootstrap/Spinner";
-import PageLoading from "../components/PageLoading";
+import Loader from "../components/Loader";
 import RickMortyList from "../components/RickMortyList";
 import BadgesList from "../components/BadgesList";
 import Error from "../pages/Error";
 import PlatziLogo from "../images/PlatziConf.png";
 import "../pages/styles/Badges.scss";
 import Api from "../api";
-// import BadgesList from "../components/BadgesList";
-class Badges extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      nextPage: 1,
-      loading: true,
-      error: false,
-      errorMessage: null,
-      data: [],
-      dataAPI: {
-        results: [],
-      },
-    };
-  }
 
-  componentDidMount() {
+function Badges() {
+
+  const [nextPage,setNextPage] = useState(1);
+  const [loading,setLoading] = useState(true);
+  const [error,setError] = useState(false);
+  const [errorMessage,setErrorMessage] = useState();
+  const [data,setData] = useState([]);
+  const [dataAPI,setDataAPI] = useState({results: [],info: []});
+  const [intervalId,setIntervalID]=useState()
+
+  useEffect(() => {
+    fetchData()
+  }, [])
+
+  const fetchCharacters = async () => {
     
-    // setTimeout(() => {
-    //   this.fetchCharacters();
-    // },3000)
-    this.fetchData();
-  }
-
-  componentDidUpdate(prevProps, prevState) {}
-
-  componentWillUnmount() {
-    clearTimeout(this.timeoutBadgesId);
-  }
-
-  fetchCharacters = async () => {
-    this.setState({ loading: true, error: null });
+    setLoading(true);
+    setError(false);
 
     try {
       const response = await fetch(
-        `https://rickandmortyapi.com/api/character?page=${this.state.nextPage}`
+        `https://rickandmortyapi.com/api/character?page=${nextPage}`
       );
 
-      const data = await response.json();
+      const dataCharacters = await response.json();
 
-      this.setState({
-        nextPage: this.state.nextPage + 1,
-        loading: false,
-        dataAPI: {
-          info: data.info,
-          // results: [].concat(this.state.dataAPI.results, data.results),
-          results: data.results,
-        },
-      });
+      setNextPage(nextPage + 1);
+      setLoading(false);
+      setLoading(false);
+      setDataAPI({
+        info: dataCharacters.info,
+        results: dataCharacters.results
+      })
+
     } catch (error) {
-      this.setState({
-        loading: false,
-        error: true,
-        errorMessage: error,
-      });
+      setLoading(false);
+      setError(true);
+      setErrorMessage(error.message);
     }
   };
 
-  fetchData = async () => {
-    this.setState({ loading: true, error: false, errorMessage:null });
-
+  const fetchData = async () => {
+    setLoading(true);
+    setError(false);
+    setErrorMessage(null);
     try {
-      const data = await Api.badges.list();
-      this.setState({ loading: false, data: data });
+      const dataBadges = await Api.badges.list();
+      console.log(dataBadges);
+      setLoading(false);
+      setData(dataBadges);
     } catch (error) {
       
-      this.setState({ loading: false, errorMessage:error.message,error: true });
+      setLoading(false);
+      setError(true);
+      setErrorMessage(error.message);
     }
   };
 
-  render() {
-    if(this.state.error){
-      return <Error  error={this.state.errorMessage}></Error>
+  if(loading){
+    return(
+      <Loader></Loader>
+    );
+  }
+    
+    if(error){
+      return <Error  error={errorMessage}></Error>
     }
 
     return (
@@ -98,40 +92,37 @@ class Badges extends React.Component {
           </div>
         </div>
 
-        {/* <div className="Badges__container">
+        <div className="Badges__container">
           <div className="Badges__buttons">
             <Link to="/badges/new" className="btn btn-success">
               New Badge
             </Link>
           </div>
-        </div> */}
+        </div>
 
         <div className="Badges__list">
           <div className="Badges__container">
-            {this.state.loading && 
-              <PageLoading></PageLoading>
-              // <Error  error={this.state.error}/>
-            }
-            {/* <RickMortyList characters={this.state.dataAPI.results}></RickMortyList> */}
-            <BadgesList badges={this.state.data}></BadgesList>
+            
+            {/* <RickMortyList characters={dataAPI.results}></RickMortyList> */}
+            <BadgesList badges={data}></BadgesList>
           </div>
         </div>
         <div className="Badges__container">
           <div className="row">
             <div className="col">
-              {/* <button
+              <button
                 className="btn btn-primary col"
-                onClick={() => this.fetchCharacters()}
+                onClick={() => fetchCharacters()}
               >
-                {this.state.loading && <Spinner animation="grow" size="lg" />}
+                {loading && <Spinner animation="grow" size="lg" />}
                 Load More
-              </button> */}
+              </button>
             </div>
           </div>
         </div>
       </React.Fragment>
     );
-  }
+  
 }
 
 export default Badges;

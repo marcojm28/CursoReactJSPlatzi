@@ -3,16 +3,16 @@ import React from 'react';
 class BadgeForm extends React.Component {
     
     handleClick = e =>{
-        console.log(this.props.formValues);
+        
     };
     
     render(){
         return (
           <div>
-            <h1>Nuevo Asistente</h1>
-            <form action="">
+            
+            <form onSubmit={this.props.onSubmit}>
               <div className="form-group">
-                <label htmlFor="">Nombres</label>
+                <label htmlFor="">First name</label>
                 <input
                   onChange={this.props.onChange}
                   className="form-control"
@@ -23,7 +23,7 @@ class BadgeForm extends React.Component {
               </div>
 
               <div className="form-group">
-                <label htmlFor="">Apellidos</label>
+                <label htmlFor="">Last name</label>
                 <input
                   onChange={this.props.onChange}
                   className="form-control"
@@ -45,7 +45,7 @@ class BadgeForm extends React.Component {
               </div>
 
               <div className="form-group">
-                <label htmlFor="">Título</label>
+                <label htmlFor="">Job Title</label>
                 <input
                   onChange={this.props.onChange}
                   className="form-control"
@@ -67,11 +67,10 @@ class BadgeForm extends React.Component {
               </div>
 
               <button
-                type="button"
                 onClick={this.handleClick}
                 className="btn btn-success"
               >
-                Guardar
+                Save
               </button>
             </form>
           </div>

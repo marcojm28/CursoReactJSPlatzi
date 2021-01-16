@@ -1,7 +1,7 @@
 import React from "react";
 import Lottie from "react-lottie";
-import animationData from "../lotties/29142-error-404.json";
-class NotFound extends React.Component {
+import animationData from "../lotties/39011-loader-validator.json";
+class Loader extends React.Component {
   render() {
     const defaultOptions = {
       loop: true,
@@ -16,7 +16,7 @@ class NotFound extends React.Component {
       <div className="container">
         <div className="row">
           <div className="col-lg align-self-center">
-            <Lottie options={defaultOptions} height={650} width={650} />
+            <Lottie options={defaultOptions} height={500} width={500} />
           </div>
         </div>
       </div>
@@ -24,4 +24,4 @@ class NotFound extends React.Component {
   }
 }
 
-export default NotFound;
+export default Loader;

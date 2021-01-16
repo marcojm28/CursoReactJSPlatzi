@@ -6,7 +6,7 @@ import Error from "../pages/Error";
 import "../pages/styles/BadgeNew.scss";
 import PlatziLogo from "../images/Subscriber-pana.png";
 import Api from "../api"
-function BadgeNew()  {
+function BadgeEdit(props)  {
 
   const [form,setForm] = useState({
         firstName: "",
@@ -16,12 +16,13 @@ function BadgeNew()  {
         twitter: "",
   });
 
-  const [loading,setLoading] = useState(false);
+  const [loading,setLoading] = useState(true);
   const [error,setError] = useState(false);
   const [errorMessage,setErrorMessage] = useState();
+  
 
   useEffect(() => {
-
+    fetchData()
   }, [])
 
   const handleChange = (e) => {
@@ -37,9 +38,10 @@ function BadgeNew()  {
     setError(false);
     
     try{
-        await Api.badges.create(form);
+        await Api.badges.update(props.match.params.badgeId,form);
         setLoading(false);
         setError(false);
+        props.history.push('/badges');
     }catch(error){
       // this.setState({ loading: false, error: false, errorMessage:error.message});
         setLoading(false);
@@ -47,6 +49,29 @@ function BadgeNew()  {
         setErrorMessage(error.message);
     }
   };
+
+  const fetchData = async () =>{
+    setLoading(true);
+    setError(false);
+    
+    try{
+      const dataBadges = await Api.badges.read(props.match.params.badgeId);
+      setForm({
+        email: dataBadges.email,
+        firstName: dataBadges.firstName,
+        lastName: dataBadges.lastName,
+        title: dataBadges.title,
+        twitter: dataBadges.twitter,
+      });
+      setLoading(false);
+      setError(false);
+      
+    }catch(error){
+        setLoading(false);
+        setError(true);
+        setErrorMessage(error.message);
+    }
+  }
 
   if(loading){
     return(
@@ -74,6 +99,7 @@ function BadgeNew()  {
         <div className="ContainerBadgeNew container">
           <div className="row">
             <div className="col-7">
+              
               <Badge
                 firstName={form.firstName || "FIRST_NAME"}
                 lastName={form.lastName || "LAST_NAME"}
@@ -83,7 +109,7 @@ function BadgeNew()  {
               />
             </div>
             <div className="col-5">
-            <h1>New Attendant</h1>
+            <h1>Edit Attendant</h1>
               <BadgeForm
                 onChange={handleChange}
                 onSubmit={handleSubmit}
@@ -97,4 +123,4 @@ function BadgeNew()  {
   
 }
 
-export default BadgeNew;
+export default BadgeEdit;

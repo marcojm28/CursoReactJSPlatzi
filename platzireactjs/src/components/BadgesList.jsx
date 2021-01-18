@@ -19,11 +19,11 @@ class BadgesList extends React.Component {
     }
 
     return (
-      <ul className="list-unstyled">
+      <div className="row">
         {this.props.badges?.map((item) => {
           return (
-            <li key={item.id}>
-              <Link className="text-reset text-decoration-none" to={`/badges/${item.id}/edit`}>
+            <div className="col-4" key={item.id}>
+              <Link className="text-reset text-decoration-none" to={`/badges/${item.id}`}>
               <div className="form-group card text-white bg-success">
                 <div className="card-header">
                   {item.firstName} {item.lastName}
@@ -52,10 +52,10 @@ class BadgesList extends React.Component {
                 </div>
               </div>
               </Link>
-            </li>
+            </div>
           );
         })}
-      </ul>
+      </div>
     );
   }
 }

@@ -6,7 +6,7 @@ import Error from "../pages/Error";
 import "../pages/styles/BadgeNew.scss";
 import PlatziLogo from "../images/Subscriber-pana.png";
 import Api from "../api"
-function BadgeNew()  {
+function BadgeNew(props)  {
 
   const [form,setForm] = useState({
         firstName: "",
@@ -40,6 +40,7 @@ function BadgeNew()  {
         await Api.badges.create(form);
         setLoading(false);
         setError(false);
+        props.history.push('/badges');
     }catch(error){
       // this.setState({ loading: false, error: false, errorMessage:error.message});
         setLoading(false);

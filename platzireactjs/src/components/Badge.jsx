@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Gravatar from './Gravatar';
 import confLogo from '../images/FortiClient.PNG';
 import confTwitter from '../images/twitter.png';
@@ -21,7 +21,7 @@ function Badge(props){
                 <div className="row">
                     <div className="col-1"></div>
                     <div className="col-3">
-                        <Gravatar email={dataGravatar.email} className={dataGravatar.className}></Gravatar>
+                        <Gravatar email={props.email} className={props.className}></Gravatar>
                     </div>
                     <div className="col">
                         <h1 className="lg">{props.firstName} <br/> {props.lastName}</h1>

@@ -100,8 +100,8 @@ function Badges() {
           </div>
         </div>
 
-        <div className="Badges__list">
-          <div className="Badges__container">
+        <div className="container-fluid">
+          <div className="">
             
             {/* <RickMortyList characters={dataAPI.results}></RickMortyList> */}
             <BadgesList badges={data}></BadgesList>

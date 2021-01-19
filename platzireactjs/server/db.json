@@ -35,7 +35,7 @@
     },
     {
       "email": "josedjm8@hotmail.com",
-      "firstName": "Jose ",
+      "firstName": "Jose David Soria",
       "lastName": "Juárez Miranda",
       "title": "Ingeniero de sistemas empresariales",
       "twitter": "@josedjm8",
@@ -80,6 +80,14 @@
       "title": "Negocios internacionales",
       "twitter": "@gsalgado",
       "id": "y3z9plW"
+    },
+    {
+      "email": "lestrada@outlook.com",
+      "firstName": "Luis",
+      "lastName": "Estrada alaluz",
+      "title": "Ingeniero de software",
+      "twitter": "@lestrada",
+      "id": "bAvFx3t"
     }
   ]
 }

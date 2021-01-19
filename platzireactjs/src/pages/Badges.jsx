@@ -92,13 +92,13 @@ function Badges() {
           </div>
         </div>
 
-        <div className="Badges__container">
+        {/* <div className="Badges__container">
           <div className="Badges__buttons">
             <Link to="/badges/new" className="btn btn-success">
               New Badge
             </Link>
           </div>
-        </div>
+        </div> */}
 
         <div className="container-fluid">
           <div className="">
